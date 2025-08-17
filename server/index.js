@@ -1,19 +1,21 @@
-// index.js
+
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 
 const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
 // Middleware
-app.use(cors()); // Allows cross-origin requests
-app.use(express.json()); // Allows server to accept and parse JSON data
+app.use(cors()); 
+app.use(express.json());
 
 app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
 
-// A simple test route to check if the server is running
+
 app.get('/api', (req, res) => {
   res.json({ message: "Hello from the backend!" });
 });
